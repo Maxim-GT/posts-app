@@ -1,24 +1,33 @@
 {
-  "name": "posts-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
-  },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6",
-    "typescript": "^5"
-  }
+	"name": "posts-app",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"debug": "cross-env NODE_OPTIONS='--inspect' next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"stylelint": "stylelint \"**/*.{css,module.css}\"",
+		"stylelint:fix": "stylelint \"**/*.{css,module.css}\" --fix",
+		"lint:all": "npm run lint && npm run stylelint",
+		"lint:all:fix": "npm run lint:fix && npm run stylelint:fix"
+	},
+	"dependencies": {
+		"next": "16.1.6",
+		"react": "19.2.3",
+		"react-dom": "19.2.3"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"eslint": "^9",
+		"eslint-config-next": "16.1.6",
+		"stylelint": "^17.3.0",
+		"stylelint-config-standard": "^40.0.0",
+		"stylelint-order": "^7.0.1",
+		"typescript": "^5"
+	}
 }
