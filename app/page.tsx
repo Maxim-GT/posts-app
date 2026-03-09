@@ -82,8 +82,6 @@ export default function Home(): JSX.Element {
 		}
 	};
 
-
-
 	return (
 		<div className={styles.cardGrid}>
 			{posts.map((card) => (
