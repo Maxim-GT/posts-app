@@ -24,3 +24,14 @@ a {
 	--border-white: #F5F5F5;
 	--border-black: #303030;
 }
+
+:root {
+	--max-width: 1200px;
+	--side-padding: 20px;
+}
+
+@media (min-width: 768px) {
+	:root {
+		--side-padding: 40px;
+	}
+}
