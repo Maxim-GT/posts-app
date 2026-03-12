@@ -19,6 +19,7 @@ export const Card = ({ title, excerpt, image, category, publishedAt, readingTime
 					fill
 					sizes="(max-width: 768px) 100vw, 33vw"
 					className={styles.image}
+					loading='eager'
 				/>
 			</div>
 			<div className={styles.content}>
