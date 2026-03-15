@@ -4,6 +4,7 @@ import "./globals.css";
 import { JSX } from 'react';
 import { Header } from './components/Header/Header';
 import styles from './layout.module.css';
+import { AppContextProvider } from '@/context/app.context';
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -28,10 +29,12 @@ export default function RootLayout({
 	return (
 		<html lang="ru">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				<div className={styles.wrapper}>
-					<Header />
-					{children}
-				</div>
+				<AppContextProvider gitLink='https://github.com/Maxim-GT'>
+					<div className={styles.wrapper}>
+						<Header />
+						{children}
+					</div>
+				</AppContextProvider>
 			</body>
 		</html>
 	);
