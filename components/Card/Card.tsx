@@ -5,8 +5,9 @@ import { CardProps } from './Card.props';
 import styles from './Card.module.css';
 import { Like } from '../Like/Like';
 import ArrowIcon from './arrow.svg';
+import Link from 'next/link';
 
-export const Card = ({ title, excerpt, image, category, publishedAt, readingTime, likesCount, userLiked = false, className, ...props }: CardProps): JSX.Element => {
+export const Card = ({ title, excerpt, image, category, publishedAt, readingTime, likesCount, userLiked = false, link, className, ...props }: CardProps): JSX.Element => {
 	return (
 		<article
 			className={cn(styles.card, className)}
@@ -39,7 +40,7 @@ export const Card = ({ title, excerpt, image, category, publishedAt, readingTime
 			</div>
 			<div className={styles.metaBottom}>
 				<span className={styles.readingTime}>{readingTime}</span>
-				<button className={styles.readMore}>Читать <ArrowIcon className={styles.arrowIcon} /></button>
+				<Link href={link} className={styles.readMore}>Читать <ArrowIcon className={styles.arrowIcon} /></Link>
 			</div>
 		</article>
 	);

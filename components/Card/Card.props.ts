@@ -9,4 +9,5 @@ export interface CardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEleme
 	readingTime: string;
 	likesCount: number;
 	userLiked?: boolean;
+	link: string;
 }

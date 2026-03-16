@@ -15,3 +15,20 @@ export async function getPosts(): Promise<PostInterface[]> {
 		return [];
 	}
 }
+
+export async function getPost(id: string | number): Promise<PostInterface | null> {
+	try {
+		const res = await fetch(`${API_DOMAIN}/posts/${id}`, {
+			method: 'GET',
+			headers: { 'content-type': 'application/json' },
+			next: { revalidate: 3600 }
+		});
+		if (!res.ok) return null;
+		return res.json();
+	} catch (e) {
+		return null;
+	}
+}
+
+
+
