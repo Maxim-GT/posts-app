@@ -12,4 +12,5 @@ export interface EnrichedPost extends PostInterface {
 	readingTime: string;
 	likesCount: number;
 	userLiked: boolean;
+	seoText?: string;
 }

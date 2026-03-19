@@ -1,10 +1,7 @@
 import { JSX } from 'react';
-
-import styles from './page.module.css';
-import Pagination from '@/components/Pagination/Pagination';
-import { Card } from '@/components';
 import { getPosts, getPost } from '@/api/posts';
 import { notFound } from 'next/navigation';
+import { PostPageComponent } from '@/view/PostPageComponent/PostPageComponent';
 
 export interface IPostPage {
 	params: Promise<{ id: string }>
@@ -28,49 +25,17 @@ export default async function PostsPage({ params }: IPostPage): Promise<JSX.Elem
 		notFound();
 	}
 
-	// const handleLikeToggle = async (postId: number | string, newState: boolean): Promise<void> => {
-	// 	setPosts((prevPosts) => prevPosts.map((post) => {
-	// 		if (post.id === postId) {
-	// 			return {
-	// 				...post,
-	// 				userLiked: newState,
-	// 				likesCount: newState ? post.likesCount + 1 : post.likesCount - 1,
-	// 			};
-	// 		}
-	// 		return post;
-	// 	})
-	// 	);
-
-	// 	try {
-	// 		const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-	// 			method: 'PATCH',
-	// 			headers: { 'Content-type': 'application/json' },
-	// 			body: JSON.stringify({ userLiked: newState }),
-	// 		});
-
-	// 		if (!response.ok) throw new Error('PATCH failed');
-	// 	} catch (error) {
-	// 		setPosts((prevPosts) =>
-	// 			prevPosts.map((post) => {
-	// 				if (post.id === postId) {
-	// 					return {
-	// 						...post,
-	// 						userLiked: !newState,
-	// 						likesCount: !newState ? post.likesCount + 1 : post.likesCount - 1
-	// 					};
-	// 				}
-	// 				return post;
-	// 			})
-	// 		);
-	// 		console.error(error);
-	// 		throw error;
-	// 	}
-	// };
-
 	return (
-		<>
-			Страница с id: {postInfo?.id}
-		</>
-
+		<PostPageComponent
+			postInfo={{
+				...postInfo,
+				image: '/maxi.png',
+				category: 'Frontend',
+				publishedAt: '1 месяц назад',
+				readingTime: '3 минуты',
+				likesCount: 3,
+				userLiked: false,
+				seoText: '<h2>Seo text</h2><p>est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla</p>'
+			}} />
 	);
 }

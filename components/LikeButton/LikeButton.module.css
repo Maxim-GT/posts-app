@@ -1,28 +1,30 @@
 .likeButton {
-    width:  34px;
-    height:  34px;
-    box-sizing: border-box;
+	width: 48px;
+	height: 48px;
+	box-sizing: border-box;
 
-    display: grid;
-    place-items: center;
-    
-    background: none;
-    border: 1px solid var(--border-black);
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    border-radius: 50%;
+	display: grid;
+	place-items: center;
+
+	background: none;
+	border: 1px solid var(--border-black);
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	border-radius: 50%;
 }
 
 .likeIcon {
-    width: 16px;
-    height: 16px;
-    display: block;
+	width: 16px;
+	height: 16px;
+	display: block;
 }
 
 .active {
-    background: var(--border-black);
+	background: var(--border-black);
+	stroke: white;
 }
-.active svg{
-    stroke: white;
+
+.active .likeIcon path {
+	stroke: white;
 }
