@@ -5,10 +5,10 @@ import Image from 'next/image';
 import cn from 'classnames';
 import { PostPageComponentProps } from './PostPageComponent.props';
 import styles from './PostPageComponent.module.css';
-import { Like } from '@/components';
+import { Comment, Like } from '@/components';
 import { LikeButton } from '@/components/LikeButton/LikeButton';
 
-export const PostPageComponent = ({ postInfo }: PostPageComponentProps): JSX.Element => {
+export const PostPageComponent = ({ postInfo, comments }: PostPageComponentProps): JSX.Element => {
 
 	const { title, body, image, category, publishedAt, readingTime, seoText, likesCount } = postInfo;
 
@@ -43,7 +43,14 @@ export const PostPageComponent = ({ postInfo }: PostPageComponentProps): JSX.Ele
 				<span className={styles.dot}>•</span>
 				<Like count={currentLikes} />
 			</div>
-			<Image src={image} alt={title} width={697} height={440} className={styles.image} />
+			<Image
+				src={image}
+				alt={title}
+				width={697}
+				height={440}
+				className={styles.image}
+				priority
+			/>
 			<div className={styles.body}>{body}</div>
 			{seoText && (
 				<div className={styles.seoWrapper}>
@@ -54,6 +61,13 @@ export const PostPageComponent = ({ postInfo }: PostPageComponentProps): JSX.Ele
 				<span>Понравилось? Жми</span>
 				<LikeButton postId={postInfo.id} initialLiked={postInfo.userLiked} onLikeToggle={handleLikeToggle} />
 			</div>
+			<div>
+
+			</div>
+			<h2 className={styles.commentTitle}>Комментарии</h2>
+			{comments.map(comment => (
+				<Comment key={comment.id} comment={comment} />
+			))}
 		</main >
 	);
 };

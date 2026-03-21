@@ -2,6 +2,7 @@ import { JSX } from 'react';
 import { getPosts, getPost } from '@/api/posts';
 import { notFound } from 'next/navigation';
 import { PostPageComponent } from '@/view/PostPageComponent/PostPageComponent';
+import { getCommentsById } from '@/api/comments';
 
 export interface IPostPage {
 	params: Promise<{ id: string }>
@@ -19,7 +20,12 @@ export async function generateStaticParams() {
 
 export default async function PostsPage({ params }: IPostPage): Promise<JSX.Element> {
 	const { id } = await params;
-	const postInfo = await getPost(Number(id));
+
+	const [postInfo, comments] = await Promise.all([
+		getPost(Number(id)),
+		getCommentsById(id)
+	]);
+
 
 	if (!postInfo) {
 		notFound();
@@ -36,6 +42,8 @@ export default async function PostsPage({ params }: IPostPage): Promise<JSX.Elem
 				likesCount: 3,
 				userLiked: false,
 				seoText: '<h2>Seo text</h2><p>est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla</p>'
-			}} />
+			}}
+			comments={comments}
+		/>
 	);
 }

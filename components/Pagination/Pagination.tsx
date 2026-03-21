@@ -9,8 +9,6 @@ export default function Pagination({ totalItems, pageSize, currentPage, classNam
 	if (totalPages <= 1) return null;
 
 	const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-	console.log(currentPage)
-
 	return (
 		<nav className={cn(styles.navigation, className)} {...props}>
 			<ul>

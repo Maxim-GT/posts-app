@@ -10,6 +10,7 @@
 	display: flex;
 	gap: 10px;
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 .tagWrapper span {
@@ -19,7 +20,13 @@
 }
 
 .image {
-	margin-left: -24px;
+	width: 100%;
+	/* Занимает всю ширину родителя */
+	height: auto;
+	/* Сохраняет пропорции автоматически */
+	max-width: 697px;
+	/* Твой текущий отступ */
+	display: block;
 }
 
 .dot {
@@ -45,8 +52,10 @@
 	text-align: justify;
 }
 
+.commentTitle,
 .seoWrapper h2 {
 	color: var(--header-text-black);
+	font-size: 24px;
 }
 
 .likeSection {
@@ -54,10 +63,15 @@
 	grid-template-columns: auto 48px;
 	justify-content: left;
 	align-items: center;
-	gap: 10px
+	gap: 10px;
+	margin: 35px 0;
 }
 
 .likeSection span {
 	font-weight: 400;
 	font-size: 16px;
+}
+
+.commentTitle {
+	margin-bottom: 20px;
 }
