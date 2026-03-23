@@ -1,8 +1,11 @@
+.main {
+	max-width: 700px;
+}
+
 .h1 {
 	font-weight: 700;
 	font-size: 34px;
 	margin-bottom: 12px;
-	max-width: 657px;
 	text-align: left;
 }
 
@@ -24,7 +27,6 @@
 	/* Занимает всю ширину родителя */
 	height: auto;
 	/* Сохраняет пропорции автоматически */
-	max-width: 697px;
 	/* Твой текущий отступ */
 	display: block;
 }
@@ -35,7 +37,6 @@
 }
 
 .body {
-	max-width: 657px;
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 32px;
@@ -44,7 +45,6 @@
 }
 
 .seoWrapper {
-	max-width: 657px;
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 32px;

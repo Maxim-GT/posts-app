@@ -23,6 +23,8 @@ a {
 	--text-primary: #1473E6;
 	--border-white: #F5F5F5;
 	--border-black: #303030;
+	--placeholder-text: #4E5D7C80;
+	--error-text: rgb(255, 86, 86);
 }
 
 :root {

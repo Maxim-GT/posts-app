@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 
 import styles from './page.module.css';
-import { getPosts } from '@/api/posts';
+import { getPosts } from '@/services/posts';
 import Pagination from '@/components/Pagination/Pagination';
 import { Card } from '@/components';
 

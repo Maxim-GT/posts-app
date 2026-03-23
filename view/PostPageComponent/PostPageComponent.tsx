@@ -5,7 +5,7 @@ import Image from 'next/image';
 import cn from 'classnames';
 import { PostPageComponentProps } from './PostPageComponent.props';
 import styles from './PostPageComponent.module.css';
-import { Comment, Like } from '@/components';
+import { Comment, CommentForm, Like } from '@/components';
 import { LikeButton } from '@/components/LikeButton/LikeButton';
 
 export const PostPageComponent = ({ postInfo, comments }: PostPageComponentProps): JSX.Element => {
@@ -32,7 +32,7 @@ export const PostPageComponent = ({ postInfo, comments }: PostPageComponentProps
 	};
 
 	return (
-		<main>
+		<main className={styles.main}>
 			<h1 className={styles.h1}>{title}</h1>
 			<div className={styles.tagWrapper}>
 				<span>{category}</span>
@@ -68,6 +68,7 @@ export const PostPageComponent = ({ postInfo, comments }: PostPageComponentProps
 			{comments.map(comment => (
 				<Comment key={comment.id} comment={comment} />
 			))}
+			<CommentForm postId={String(postInfo.id)} />
 		</main >
 	);
 };

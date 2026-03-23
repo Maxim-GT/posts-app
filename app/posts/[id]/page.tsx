@@ -1,8 +1,8 @@
 import { JSX } from 'react';
-import { getPosts, getPost } from '@/api/posts';
+import { getPosts, getPost } from '@/services/posts';
 import { notFound } from 'next/navigation';
 import { PostPageComponent } from '@/view/PostPageComponent/PostPageComponent';
-import { getCommentsById } from '@/api/comments';
+import { getCommentsById } from '@/services/comments';
 
 export interface IPostPage {
 	params: Promise<{ id: string }>
