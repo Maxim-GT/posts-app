@@ -12,6 +12,6 @@
 	color: var(--text-primary);
 }
 
-.errorTitle {
+.error {
 	color: var(--error-text);
 }
