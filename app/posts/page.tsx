@@ -4,6 +4,7 @@ import styles from './page.module.css';
 import { getPosts } from '@/services/posts';
 import Pagination from '@/components/Pagination/Pagination';
 import { Card } from '@/components';
+import { AnimatedList } from './AnimatedList';
 
 export interface IPostsListsPage {
 	searchParams: Promise<{ page?: string }>
@@ -27,23 +28,22 @@ export default async function PostsListsPage({ searchParams }: IPostsListsPage):
 
 	return (
 		<main>
-			<div className={styles.cardGrid} >
-				{
-					displayedPosts.map((post) => (
-						<Card
-							key={post.id}
-							image={'/mini.png'}
-							title={post.title}
-							excerpt={post.body}
-							category='Front-end'
-							publishedAt='1 месяц назад'
-							readingTime='3 минуты'
-							likesCount={4}
-							link={`/posts/${post.id}`}
-						/>
-					))
-				}
-			</div>
+			<AnimatedList>
+				{displayedPosts.map((post) => (
+					<Card
+						key={post.id}
+						image={'/mini.png'}
+						title={post.title}
+						excerpt={post.body}
+						category='Front-end'
+						publishedAt='1 месяц назад'
+						readingTime='3 минуты'
+						likesCount={4}
+						link={`/posts/${post.id}`}
+					/>
+				))}
+			</AnimatedList>
+
 			<Pagination
 				currentPage={currentPage}
 				totalItems={posts.length}
