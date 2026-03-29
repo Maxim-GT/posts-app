@@ -26,17 +26,21 @@ const item = {
 
 export const AnimatedList = ({ children }: { children: ReactNode }) => {
 	return (
-		<motion.div
+		<motion.ul
 			className={styles.cardGrid}
 			variants={container}
 			initial="hidden"
 			animate="visible"
 		>
 			{React.Children.map(children, (child) => (
-				<motion.div variants={item}>
+				<motion.li
+					key={React.isValidElement(child) ? child.key : undefined}
+					variants={item}
+					className={styles.cardGridItem}
+				>
 					{child}
-				</motion.div>
+				</motion.li>
 			))}
-		</motion.div>
+		</motion.ul>
 	)
 }

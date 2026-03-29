@@ -1,6 +1,7 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
+import Link from 'next/link';
 
-export interface CardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface CardProps extends Omit<ComponentPropsWithoutRef<typeof Link>, 'href' | 'children'> {
 	title: string;
 	excerpt: string;
 	image: string;

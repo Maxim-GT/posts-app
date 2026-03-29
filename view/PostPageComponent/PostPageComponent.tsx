@@ -32,8 +32,10 @@ export const PostPageComponent = ({ postInfo, comments }: PostPageComponentProps
 	};
 
 	return (
-		<main className={styles.main}>
-			<h1 className={styles.h1}>{title}</h1>
+		<main id="main-content" aria-labelledby="post-title" className={styles.main}>
+			<h1 id="post-title" className={styles.h1}>
+				{title}
+			</h1>
 			<div className={styles.tagWrapper}>
 				<span>{category}</span>
 				<span className={styles.dot}>•</span>

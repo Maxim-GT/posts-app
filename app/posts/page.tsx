@@ -23,11 +23,21 @@ export default async function PostsListsPage({ searchParams }: IPostsListsPage):
 	const displayedPosts = posts.slice(start, end);
 
 	if (!posts || posts.length === 0) {
-		return <div>Постов пока нет.</div>;
+		return (
+			<main id="main-content" aria-labelledby="posts-heading">
+				<h1 id="posts-heading" className={styles.pageTitle}>
+					Посты
+				</h1>
+				<p>Постов пока нет.</p>
+			</main>
+		);
 	}
 
 	return (
-		<main>
+		<main id="main-content" aria-labelledby="posts-heading">
+			<h1 id="posts-heading" className={styles.pageTitle}>
+				Посты
+			</h1>
 			<AnimatedList>
 				{displayedPosts.map((post) => (
 					<Card

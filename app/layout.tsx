@@ -30,6 +30,9 @@ export default function RootLayout({
 		<html lang="ru">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<AppContextProvider gitLink='https://github.com/Maxim-GT'>
+					<a href="#main-content" className={styles.skipLink}>
+						К основному содержимому
+					</a>
 					<div className={styles.wrapper}>
 						<Header />
 						{children}

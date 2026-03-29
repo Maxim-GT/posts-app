@@ -1,7 +1,23 @@
+.pageTitle {
+	margin: 0 0 1.5rem;
+	font-size: 1.75rem;
+	font-weight: 700;
+}
+
 .cardGrid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 30px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.cardGridItem {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	min-width: 0;
 }
 
 .pagination {

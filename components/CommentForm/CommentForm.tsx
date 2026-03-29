@@ -44,15 +44,18 @@ export const CommentForm = ({ postId, className, ...props }: CommentFormProps): 
 				className={cn(styles.reviewForm, className)}
 				{...props}
 			>
-				<Input {...register('name', {
-					required: {
-						value: true, message: 'Заполните имя'
-					}
-				})}
+				<Input
+					{...register('name', {
+						required: {
+							value: true, message: 'Заполните имя'
+						}
+					})}
 					placeholder='Имя'
+					aria-label="Имя"
 					error={errors.name}
 				/>
-				<Textarea {...register('comment', {
+				<Textarea
+					{...register('comment', {
 					required: 'Напишите хотя бы пару предложений',
 					validate: (value) => {
 						const wordCount = value.trim().split(/\s+/).filter(Boolean).length;
@@ -65,16 +68,21 @@ export const CommentForm = ({ postId, className, ...props }: CommentFormProps): 
 					}
 				})}
 					placeholder='Комментарий'
+					aria-label="Текст комментария"
 					error={errors.comment}
 				/>
 				<Button type='submit' className={styles.button}>Отправить</Button>
 			</div>
-			{isSuccess && <div className={cn(styles.success, styles.panel)}>
-				<div className={styles.successTitle}>Ваш комментарий отправлен</div>
-			</div>}
-			{error && <div className={cn(styles.error, styles.panel)}>
-				Что-то пошло не так, попробуйте обновить страницу
-			</div>}
+			{isSuccess && (
+				<div className={cn(styles.success, styles.panel)} role="status" aria-live="polite">
+					<div className={styles.successTitle}>Ваш комментарий отправлен</div>
+				</div>
+			)}
+			{error && (
+				<div className={cn(styles.error, styles.panel)} role="alert">
+					Что-то пошло не так, попробуйте обновить страницу
+				</div>
+			)}
 		</form>
 	);
 };

@@ -10,13 +10,18 @@ export default function Pagination({ totalItems, pageSize, currentPage, classNam
 
 	const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 	return (
-		<nav className={cn(styles.navigation, className)} {...props}>
+		<nav className={cn(styles.navigation, className)} aria-label="Постраничная навигация по списку постов" {...props}>
 			<ul>
 				{pages.map(page => (
 					<li key={page}>
-						<Link href={`?page=${page}`} scroll={false} className={cn(styles.numbers, {
-							[styles.active]: currentPage === page
-						})}>
+						<Link
+							href={`?page=${page}`}
+							scroll={false}
+							className={cn(styles.numbers, {
+								[styles.active]: currentPage === page
+							})}
+							aria-current={currentPage === page ? 'page' : undefined}
+						>
 							{page}
 						</Link>
 					</li>

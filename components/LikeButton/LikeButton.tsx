@@ -27,6 +27,8 @@ export const LikeButton = ({ postId, initialLiked = false, onLikeToggle, classNa
 			{...props}
 			onClick={handleClick}
 			type="button"
+			aria-pressed={isLiked}
+			aria-label={isLiked ? 'Убрать лайк' : 'Поставить лайк'}
 		>
 			<LikeIcon className={styles.likeIcon} />
 		</button >

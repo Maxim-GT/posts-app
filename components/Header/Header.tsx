@@ -11,14 +11,19 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
 	const { gitLink } = useContext(AppContext);
 
 	return (
-		<div {...props} className={styles.wrapper}>
+		<header {...props} className={styles.wrapper}>
 			<span className={styles.text}>
 				.my_blog
 			</span>
-			<a href={gitLink} target='_blanck'>
-				<GitIcon className={styles.icon} />
+			<a
+				href={gitLink}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Открыть профиль на GitHub в новой вкладке"
+			>
+				<GitIcon className={styles.icon} aria-hidden />
 			</a>
 
-		</div>
+		</header>
 	);
 };
