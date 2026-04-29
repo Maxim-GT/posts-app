@@ -4,4 +4,5 @@ export interface IPaginationProps extends DetailedHTMLProps<HTMLAttributes<HTMLE
 	totalItems: number;
 	pageSize: number;
 	currentPage: number;
+	query?: string;
 }

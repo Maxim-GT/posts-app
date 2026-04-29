@@ -20,8 +20,7 @@ export default defineConfig([
 					allowExpressions: true,
 					allowTypedFunctionExpressions: true,
 					allowHigherOrderFunctions: true,
-					allowDirectConstAssertionInArrowFunctions: true,
-					allowSingleExtends: true,
+					allowDirectConstAssertionInArrowFunctions: true
 				},
 			],
 		},

@@ -2,7 +2,7 @@
 
 import { JSX, useState } from 'react';
 import Image from 'next/image';
-import cn from 'classnames';
+import Link from 'next/link';
 import { PostPageComponentProps } from './PostPageComponent.props';
 import styles from './PostPageComponent.module.css';
 import { Comment, CommentForm, Like } from '@/components';
@@ -33,6 +33,13 @@ export const PostPageComponent = ({ postInfo, comments }: PostPageComponentProps
 
 	return (
 		<main id="main-content" aria-labelledby="post-title" className={styles.main}>
+			<nav className={styles.breadcrumbs} aria-label="Хлебные крошки">
+				<Link href="/" className={styles.breadcrumbLink}>Главная</Link>
+				<span className={styles.breadcrumbSeparator}>/</span>
+				<Link href="/posts" className={styles.breadcrumbLink}>Посты</Link>
+				<span className={styles.breadcrumbSeparator}>/</span>
+				<span className={styles.breadcrumbCurrent} aria-current="page">{title}</span>
+			</nav>
 			<h1 id="post-title" className={styles.h1}>
 				{title}
 			</h1>
@@ -45,26 +52,27 @@ export const PostPageComponent = ({ postInfo, comments }: PostPageComponentProps
 				<span className={styles.dot}>•</span>
 				<Like count={currentLikes} />
 			</div>
-			<Image
-				src={image}
-				alt={title}
-				width={697}
-				height={440}
-				className={styles.image}
-				priority
-			/>
-			<div className={styles.body}>{body}</div>
+			<div className={styles.heroImageWrapper}>
+				<Image
+					src={image}
+					alt={title}
+					width={1280}
+					height={720}
+					className={styles.image}
+					priority
+				/>
+			</div>
+			<article className={styles.textContent}>
+				<p className={styles.body}>{body}</p>
+			</article>
 			{seoText && (
-				<div className={styles.seoWrapper}>
+				<article className={styles.seoWrapper}>
 					<div dangerouslySetInnerHTML={{ __html: seoText }}></div>
-				</div>
+				</article>
 			)}
 			<div className={styles.likeSection}>
 				<span>Понравилось? Жми</span>
 				<LikeButton postId={postInfo.id} initialLiked={postInfo.userLiked} onLikeToggle={handleLikeToggle} />
-			</div>
-			<div>
-
 			</div>
 			<h2 className={styles.commentTitle}>Комментарии</h2>
 			{comments.map(comment => (

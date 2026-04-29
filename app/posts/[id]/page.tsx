@@ -3,14 +3,15 @@ import { getPosts, getPost } from '@/services/posts';
 import { notFound } from 'next/navigation';
 import { PostPageComponent } from '@/view/PostPageComponent/PostPageComponent';
 import { getCommentsById } from '@/services/comments';
+import { getPicsumImageUrl } from '@/utils/image';
 
 export interface IPostPage {
 	params: Promise<{ id: string }>
 }
 
 export async function generateStaticParams() {
-	const posts = await getPosts();
-	if (!posts) return [];
+	const { items: posts } = await getPosts();
+	if (!posts.length) return [];
 
 	return posts.map(post => (
 		{ id: String(post.id) }
@@ -35,7 +36,7 @@ export default async function PostsPage({ params }: IPostPage): Promise<JSX.Elem
 		<PostPageComponent
 			postInfo={{
 				...postInfo,
-				image: '/maxi.png',
+				image: getPicsumImageUrl(postInfo.id, 1280, 720),
 				category: 'Frontend',
 				publishedAt: '1 месяц назад',
 				readingTime: '3 минуты',

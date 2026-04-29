@@ -1,12 +1,46 @@
 .main {
 	max-width: 700px;
+	margin: 0 auto;
+}
+
+.breadcrumbs {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 0.85rem;
+	font-size: 0.9rem;
+	color: #6b7280;
+}
+
+.breadcrumbLink {
+	color: var(--text-primary);
+	text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+	text-decoration: underline;
+}
+
+.breadcrumbSeparator {
+	color: #9ca3af;
+}
+
+.breadcrumbCurrent {
+	color: #6b7280;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .h1 {
 	font-weight: 700;
-	font-size: 34px;
+	font-size: clamp(1.9rem, 1.5rem + 1.5vw, 2.35rem);
 	margin-bottom: 12px;
 	text-align: left;
+	line-height: 1.2;
+	color: var(--header-text-black);
 }
 
 .tagWrapper {
@@ -14,6 +48,7 @@
 	gap: 10px;
 	align-items: center;
 	flex-wrap: wrap;
+	margin-bottom: 1rem;
 }
 
 .tagWrapper span {
@@ -24,11 +59,30 @@
 
 .image {
 	width: 100%;
-	/* Занимает всю ширину родителя */
 	height: auto;
-	/* Сохраняет пропорции автоматически */
-	/* Твой текущий отступ */
 	display: block;
+	object-fit: cover;
+	aspect-ratio: 16 / 9;
+	transition: transform 300ms ease;
+}
+
+.heroImageWrapper {
+	overflow: hidden;
+	border: 1px solid var(--border-white);
+	border-radius: 14px;
+	box-shadow: 0 10px 30px rgb(15 23 42 / 10%);
+	margin-bottom: 1.5rem;
+}
+
+.heroImageWrapper:hover .image {
+	transform: scale(1.02);
+}
+
+.textContent {
+	background: #fff;
+	border-left: 3px solid var(--text-primary);
+	padding-left: 1rem;
+	margin-bottom: 1rem;
 }
 
 .dot {
@@ -38,24 +92,31 @@
 
 .body {
 	font-weight: 400;
-	font-size: 18px;
-	line-height: 32px;
-	color: var(--text-grey);
-	text-align: justify;
+	font-size: 1.1rem;
+	line-height: 1.95;
+	color: #384152;
+	margin: 0;
+	text-wrap: pretty;
 }
 
 .seoWrapper {
 	font-weight: 400;
-	font-size: 18px;
-	line-height: 32px;
-	color: var(--text-grey);
-	text-align: justify;
+	font-size: 1.05rem;
+	line-height: 1.9;
+	color: #404a5b;
+	text-wrap: pretty;
+	margin-bottom: 0.5rem;
 }
 
 .commentTitle,
 .seoWrapper h2 {
 	color: var(--header-text-black);
 	font-size: 24px;
+	line-height: 1.25;
+}
+
+.seoWrapper p {
+	margin-top: 0;
 }
 
 .likeSection {
@@ -74,4 +135,16 @@
 
 .commentTitle {
 	margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+	.main {
+		max-width: 100%;
+	}
+
+	.body,
+	.seoWrapper {
+		font-size: 1rem;
+		line-height: 1.75;
+	}
 }

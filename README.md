@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Posts App
 
-## Getting Started
+Frontend-проект блога на `Next.js + TypeScript` с серверным поиском, пагинацией, страницей поста, комментариями и адаптивным интерфейсом.
 
-First, run the development server:
+![Интерфейс проекта](./public/image.png)
+
+## Project Overview
+
+Цель проекта — реализовать удобный и современный интерфейс для чтения постов:
+
+- главная страница-витрина проекта;
+- лента постов с серверным поиском;
+- URL-driven пагинация;
+- страница конкретного поста;
+- комментарии и интерактив лайков;
+- хлебные крошки для навигации.
+
+## Tech Stack
+
+- `Next.js 16` (App Router) — роутинг, server rendering и data fetching.
+- `React 19` — компонентная архитектура интерфейса.
+- `TypeScript` — строгая типизация доменных сущностей и сервисов.
+- `CSS Modules` — локальная модульная стилизация.
+- `Framer Motion` — анимации списка постов.
+- `React Hook Form` — управление формой комментариев.
+- `ESLint + Stylelint` — контроль качества кода и стилей.
+- `Playwright` — e2e-проверка ключевого сценария поиска.
+
+## Architecture
+
+Проект организован по функциональным папкам:
+
+- `app` — страницы и маршруты (`/`, `/posts`, `/posts/[id]`).
+- `components` — переиспользуемые UI-компоненты (`Card`, `Pagination`, `CommentForm`, `LikeButton` и др.).
+- `view` — композиционные компоненты экранов (например, `PostPageComponent`).
+- `services` — работа с API (`posts`, `comments`).
+- `context` — глобальный контекст приложения.
+- `utils` — утилиты (например, генерация URL изображений).
+- `tests/e2e` — end-to-end сценарии.
+
+## Key Features
+
+- Server-side поиск по постам через query-параметр `q`.
+- Server-side пагинация (`_page`, `_limit`) с сохранением `q` между страницами.
+- Нормализация невалидной страницы (`redirect` на последнюю доступную).
+- Сценарии empty/error на странице постов.
+- Хлебные крошки на списке постов и на странице поста.
+- Стабильные изображения постов через `picsum.photos` (`seed` на основе `post.id`).
+- E2E тест: поиск -> переход на 2 страницу -> сохранение фильтра.
+
+## Requirements
+
+- `Node.js 20+`
+- `npm`
+
+## Environment Variables
+
+Создайте файл `.env.local` в корне проекта.
+
+Минимально необходимая переменная:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+NEXT_PUBLIC_DOMAIN=https://jsonplaceholder.typicode.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Run
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Приложение будет доступно по адресу:
 
-## Learn More
+`http://localhost:3000`
 
-To learn more about Next.js, take a look at the following resources:
+## Production Build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Code Quality
 
-## Deploy on Vercel
+```bash
+npm run lint
+npm run stylelint
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## E2E Tests
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run test:e2e
+```
