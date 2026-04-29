@@ -1,0 +1,21 @@
+.navigation {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.navigation ul {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+	list-style: none;
+	padding: 0;
+}
+
+.numbers:hover {
+	color: var(--text-primary);
+}
+
+.active {
+	color: var(--text-primary);
+}

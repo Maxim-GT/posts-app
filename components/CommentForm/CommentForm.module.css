@@ -1,0 +1,17 @@
+.reviewForm {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 14px;
+}
+
+.button {
+	align-self: start;
+}
+
+.successTitle {
+	color: var(--text-primary);
+}
+
+.error {
+	color: var(--error-text);
+}

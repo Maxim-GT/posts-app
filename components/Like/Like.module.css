@@ -1,0 +1,18 @@
+.like {
+	color: var(--text-grey);
+	display: flex;
+	gap: 2px;
+	align-items: flex-end;
+	font-weight: 300;
+	font-size: 12px;
+}
+
+.likeIcon {
+	width: 16px;
+	height: 16px;
+}
+
+.active {
+	fill: red;
+	stroke-width: 0;
+}
